@@ -6,7 +6,8 @@ int main()
 	int t;
 	cin >> t;
 	while(t--){
-		int num , originalNum , result = 0, n = 0;
+		long long num , originalNum , result = 0;
+		int n = 0;
 		cin >> num;
 		originalNum = num ;
 		while(originalNum > 0){

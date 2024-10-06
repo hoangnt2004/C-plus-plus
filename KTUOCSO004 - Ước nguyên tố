@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+int kt(long long n){
+	long long tmp =  n;
+	long long k = 1;
+	for(int i = 2; i <= sqrt(tmp); i++){
+		if(tmp % i == 0){
+			k *= i;
+			while(tmp % i == 0){
+				tmp /= i;
+			}
+		}
+	}
+	if(tmp > 1){
+		k *= tmp;
+	}
+	return k == n;
+}
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+    	long long n;
+    	cin >> n;
+    	if(kt(n)){
+    		cout << "NO" << endl;
+		}else{
+			cout << "YES" << endl;
+		}
+	}
+return 0;
+}

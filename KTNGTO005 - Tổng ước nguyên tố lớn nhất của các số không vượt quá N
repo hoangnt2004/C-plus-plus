@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+int uocso(int n){
+    int k = 0;
+    while(n % 2 == 0){
+        k = 2;
+        n/=2;
+    }
+    for(int i = 3; i <= sqrt(n); i+= 2){
+        if(n % i ==0 ){
+            while(n % i == 0){
+                k = i;
+                n /= i;
+            }
+        }
+    }
+    if(n > 1) k = n;
+    return k;
+}
+int prime[500001];
+void check(){
+    for(int i = 2; i <= 500001; i++){
+        prime[i] = uocso(i);
+    }
+}
+void solve(){
+    int n;
+    cin >> n;
+    long long sum = 0;
+    for(int i = 2;i <= n; i++){
+        sum += prime[i];
+    }
+    
+    cout << sum << endl;
+}
+int main(){
+    check();
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+    }
+}

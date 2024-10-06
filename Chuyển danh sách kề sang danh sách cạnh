@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+int t;
+cin >> t;
+while(t--){
+	int n; 
+	cin >> n;
+	cin.ignore();
+	int C[n][n];
+	memset(C, 0, sizeof(C));
+	for (int i = 1; i <= n; i++) {
+		string s; 
+		getline(cin, s);
+		string a;
+		stringstream x(s);
+		while (x >> a) {
+			C[i][stoi(a)] = 1;
+			C[stoi(a)][i] = 1;
+		}
+	}
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++) {
+			if (C[i][j] == 1) {
+				cout << i << " " << j << endl;
+				C[j][i] = 0;
+			}
+		}
+		
+	}
+}
+   return 0;
+}

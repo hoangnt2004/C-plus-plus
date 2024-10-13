@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        ll r, l , n;
+        cin >> r >> l;
+        if(r % 2 == 0) r++;
+        if(l % 2 == 0) l--;
+        n = (l - r)/2 + 1;
+        ll sum ;
+        sum = (r+l)*n/2;
+        cout << sum << endl;
+    }
+}

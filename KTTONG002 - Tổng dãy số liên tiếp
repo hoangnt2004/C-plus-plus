@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        ll r, l, n;
+        cin >> r >> l;
+        n = (l - r) + 1;
+        ll sum ;
+        sum = (l+ r)*n/2;
+        cout << sum << endl;
+    }
+}

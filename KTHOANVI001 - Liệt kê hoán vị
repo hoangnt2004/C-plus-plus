@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int used[20];
+int arr[20];
+int n;
+void printx(){
+    for(int i = 0 ; i < n; i++){
+        cout << arr[i] <<(i<n-1?" ":"\n");
+    }
+}
+void Try(int index){
+    if(index >= n){
+        printx();
+        return ;
+    }
+    for(int i = 1; i <= n; i++){
+        if(used[i] == 0){
+            used[i] = 1;
+            arr[index] = i;
+            Try(index+1);
+            used[i] = 0;
+        }
+    }
+}
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        cin >> n;
+        Try(0);
+    }
+}

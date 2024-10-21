@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>> t;
+    while(t--){
+        int k;
+        cin >> k;
+        int d =  k / 2;
+        long long cnt1 = pow(10, d) - pow(10, d -1);
+        long long cnt = 0;
+        if(k % 2 == 0){
+            cnt = cnt1;
+        }else{
+            cnt = cnt1*10;
+        }
+        if(k == 1){
+            cnt = 9;
+        }
+        cout << cnt << endl;
+    }
+}

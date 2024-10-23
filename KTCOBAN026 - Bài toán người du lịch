@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n , m, ans = INT_MAX, cmin = INT_MAX;
+int c[1000][1000], check[1000], luu[1000] , sau[1000];
+void Try(int k ){
+    for(int i = 2; i <=n ; i++){
+        if(check[i] == 0 && c[sau[k-1]][i] != 0){
+            check[i] = 1;
+            luu[k] = luu[k-1] + c[sau[k-1]][i];
+            sau[k] = i;
+            if(k == n - 1){
+                if(c[i][1]){
+                    int total = luu[k] + c[i][1];
+                    if(total < ans){
+                        ans = total;
+                    }
+                }
+            }else{
+                if(luu[k] + cmin*(n - k) < ans){
+                    Try(k+1);
+                    
+                }
+            }
+            check[i] = 0;
+        } 
+        
+    }
+}
+int main(){
+    cin >> n >> m;
+    int k , j , c0;
+    sau[0] = 1;
+    for(int i  = 1; i <= m; i++){
+        cin >> k >> j >> c0;
+        c[k][j] = c0;
+        cmin = min(cmin , c0);
+    }
+    Try(1);
+    cout << ans << endl;
+}

@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+void tong(string a){
+    int carry = 1;
+    string result ;
+    int len = a.size();
+    reverse(a.begin(), a.end());
+    for(int i = 0; i < len ; i++){
+        int digit = (i < len) ? a[i] - '0' : 0;
+        int sum = digit + carry;
+        carry = sum / 10;
+        result.push_back((sum % 10) + '0');
+    }
+    if(carry) result.push_back(carry +'0');
+    reverse(result.begin(), result.end());
+    cout << result;
+}
+int main(){
+    string a;
+    cin >> a;
+    tong(a);
+}

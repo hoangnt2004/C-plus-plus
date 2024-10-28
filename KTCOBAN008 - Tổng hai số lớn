@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+void tong(string a, string b){
+    string result ;
+    int carry = 0;
+    int len1 = a.size();
+    int len2 = b.size();
+    reverse(a.begin(), a.end());
+    reverse(b.begin(), b.end());
+    for(int i = 0; i < max(len1, len2); i++){
+        int digit1 = (i < len1) ? a[i] - '0' : 0;
+        int digit2 = (i < len2) ? b[i] - '0' : 0;
+        int sum = digit1 + digit2 + carry;
+        carry = sum / 10;
+        result.push_back((sum % 10) +'0');
+    }
+    if(carry) result.push_back(carry+'0');
+    reverse(result.begin(), result.end());
+    cout << result << endl;
+}
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        string a, b;
+        cin >> a >> b;
+        tong(a,b);
+    }
+    return 0;
+}

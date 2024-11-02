@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long 
+ll cnt(ll n){
+    ll dem = 0; 
+    while(n > 0){
+       dem += n /5;
+       n /= 5;
+    }
+    return dem;
+}
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        ll n;
+        cin >> n ;
+        ll left = 1, right = 5 *n ;
+        while(left <= right){
+            ll mid =  (right + left) / 2;
+            if(cnt(mid) < n){
+                left = mid + 1;
+            }else{
+                 right = mid - 1;
+            }
+        }
+        cout << left << endl;
+    }
+}

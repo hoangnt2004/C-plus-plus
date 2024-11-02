@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        ll n;
+        cin >> n;
+        stack<ll> st;
+           if(n == 0){
+            cout << "0" <<endl;
+            continue;;
+        }
+        while(n > 0){
+            int x = n % 16;
+            st.push(x);
+            n/=16;
+        }
+        while(!st.empty()){
+            if(st.top() < 10){
+                cout << st.top();
+            }else 
+            {
+                cout << char(st.top() - 10 + 'A');
+            }
+            st.pop();
+        }
+        cout << endl;
+    }
+    return 0;
+}

@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin >> t;
+    while(t--){
+        long long n;
+        cin >> n;
+        long long tmp = 2, ans = 0;
+        while(tmp <= n){
+            ans += n/tmp;
+            tmp *= 2;
+        }
+        cout << ans << endl;
+    }
+}

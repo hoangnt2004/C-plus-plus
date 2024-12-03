@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int bfs(ll n){
+    queue<pair<int, int>> q;
+    unordered_set<long long> visited;
+
+    q.push({n, 0});
+    visited.insert(n);
+
+    while(!q.empty()){
+        int c = q.front().first;
+        int steps = q.front().second;
+        q.pop();
+
+        if(c == 0) return steps;
+
+        if(c - 1 >= 0 && visited.find(c - 1) == visited.end()){
+            visited.insert(c - 1);
+            q.push({c-1, steps + 1});
+        } 
+
+        if(c % 2 == 0 && visited.find(c/2) == visited.end()){
+            visited.insert(c/2);
+            q.push({c/2, steps+1});
+        }
+
+        if(c % 3 == 0 && visited.find(c/3) == visited.end()){
+            visited.insert(c/3);
+            q.push({c/3, steps+1});
+        }
+
+        ll x = sqrt(c);
+        if(x*x == c && visited.find(x) == visited.end()){
+            visited.insert(x);
+            q.push({x, steps+1});
+        }
+    }
+    return -1;
+}
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        cout << bfs(n) << endl;
+    }
+    return 0;
+}

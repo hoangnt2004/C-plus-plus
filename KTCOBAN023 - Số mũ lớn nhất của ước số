@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        int n , p;
+        cin >> n >> p;
+        long long x = 0;
+        long long power  = p;
+        while(power <= n){
+            x += n/ power;
+            power *= p;
+        }
+        cout << x << endl;
+    }
+}

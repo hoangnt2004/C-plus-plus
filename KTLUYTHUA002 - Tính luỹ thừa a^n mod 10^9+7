@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int mod = 1e9 + 7;
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        long long a, n;
+        cin >> a >> n;
+        long long result = 1; 
+        a = a % mod;
+        while(n > 0){
+            if(n % 2 == 1){
+                result = (result * a) % mod;
+            }
+            a = (a * a) % mod;
+            n /= 2;
+        }
+        cout << result << endl;
+    }
+}

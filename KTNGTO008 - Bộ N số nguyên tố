@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n,p,s, a[20], snt[1000], k , c , check[1000], z;
+int checksnt(int n){
+    if(n < 2) return 0;
+    for(int i = 2; i <= sqrt(n); i++){
+        if(n % i == 0){
+            return 0;
+        }
+    }
+    return 1;
+}
+void print(){
+    z = 1;
+    for(int i = 1; i <= n; i++){
+        cout << snt[a[i]] << " ";
+    }
+    cout << endl;
+}
+void Try(int k , int sum){
+    if(k == n+1){
+        if(sum == s){
+            print();
+        }
+    }else{
+        for(int i = a[k-1] + 1; i <= c ; i++){
+            if(check[i] == 0){
+                if(sum + snt[i] <= s){
+                    check[i] = 1;
+                    a[k] = i;
+                    Try(k+1, sum + snt[i]);
+                    check[i] = 0;
+                }
+            }
+        }
+    }
+}
+int main(){
+    cin >> p >> n >> s;
+    for(int i = p + 1 ; i <= s; i++){
+        if(checksnt(i)){
+          snt[++c] = i;  
+        }
+    }
+    if(c < n){
+        cout << -1 <<endl;
+        return 0;
+    }
+    Try(1, 0);
+    if(z == 0){
+        cout << -1 << endl;
+    }
+    return 0;
+}

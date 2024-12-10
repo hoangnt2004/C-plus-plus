@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long 
+ll count(ll n){
+    ll dem = 0;
+    ll k = 2;
+    while((k*(k - 1))/ 2 < n){
+        ll sum = (k*(k-1))/2;
+        if((n-sum)%k == 0){
+            dem ++;
+        }
+        k++;
+    }
+    return dem;
+}
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        ll n;
+        cin >> n;
+        cout << count(n) << endl;
+    }
+}

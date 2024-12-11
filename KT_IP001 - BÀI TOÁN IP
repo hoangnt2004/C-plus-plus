@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool check(string s){
+    if(s.size() < 1 ||  s.size() > 3) return false ;
+    if(s.size() > 1 && s[0] == '0') return false ;
+    int num = stoi(s);
+    return num >= 0 && num <= 255;
+}
+int solve(string s){
+    int l = s.size();
+    int cnt = 0;
+    for(int i = 1; i < l && i <= 3; i++){
+        for(int j = i + 1; j < l && j <= i+ 3; j++){
+            for(int k = j + 1; k < l && k <= j + 3; k++){
+                string s1 = s.substr(0, i);
+                string s2 = s.substr(i, j-i);
+                string s3 = s.substr(j , k-j);
+                string s4 = s.substr(k);
+                if(check(s1) && check(s2) && check(s3) && check(s4)){
+                    cnt++;
+                } 
+            }
+        }
+    }
+    return cnt;
+}
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        string s;
+        cin >> s;
+        cout << solve(s) << endl;
+    }
+}

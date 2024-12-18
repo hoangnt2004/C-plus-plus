@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int mod = 1e9+7;
+#define ll long long
+ll powmod(ll n , ll k){
+    ll res = 1;
+    while(k > 0){
+        if(k % 2 == 1){
+            res = (res * n) % mod;
+        }
+        n = (n * n) % mod;
+        k /= 2;
+    }
+    return res;
+}
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        ll n;
+        cin >> n;
+        if(n  % 2 == 1 ){
+            cout << -1 << endl;
+        }else{
+            cout << powmod(2, n/2 -1) << endl;
+        }
+    }
+}

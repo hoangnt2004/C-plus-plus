@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        int m , n;
+        cin >> m >> n;
+        int a[m][n];
+        for(int i = 0; i < m ; i++){
+            for(int j = 0; j < n ; j++){
+                cin >> a[i][j];
+            }
+        }
+        int b[m][n];
+        for(int j = 0; j < n ; j++){
+            b[0][j] = a[0][j];
+        }
+        for(int i = 1; i < m ;i++){
+            for(int j = 0; j < n; j++){
+                b[i][j] = a[i][j] + max({(j <= 0) ? -INT_MAX : b[i-1][j-1], b[i-1][j], (j == n-1) ? -INT_MAX : b[i-1][j+1]});
+            }
+        }
+        int tmp = -INT_MAX;
+        for(int i = 0; i < n; i++){
+            tmp = max(tmp, b[m-1][i]);
+        }
+        cout << tmp << endl;
+    }
+}
